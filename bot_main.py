@@ -73,21 +73,21 @@ def return_search(message, data):
 
 
 
-@bot.message_handler(func = lambda message: message.text in ['1','2','3','4','5','6','7','8','9','10'])
-def send_to_club_page(message):
-    """Scraping from the page of the chosen team"""
+# @bot.message_handler(func = lambda message: message.text in ['1','2','3','4','5','6','7','8','9','10'])
+# def send_to_club_page(message):
+#     """Scraping from the page of the chosen team"""
     
-    index = int(message.text)-1
-    print(index)
-    # url = data.loc[index]['urls']
-    # club_data = club_info(url)
-    # departures = club_data[0]
-    # arrivals = club_data[1]
-    # mv = club_data[2]
-    # msg = "hello"
-    # departures_mess = "Top arrivals are:\n\n"
-    # for i in range(len(departures)):
-    #     departures_mess += f"""{departures.loc[i]['Players']}"""
-    # bot.send_message(message.chat.id, departures, parse_mode='html')
+#     index = int(message.text)-1
+#     print(index)
+#     # url = data.loc[index]['urls']
+#     # club_data = club_info(url)
+#     # departures = club_data[0]
+#     # arrivals = club_data[1]
+#     # mv = club_data[2]
+#     # msg = "hello"
+#     # departures_mess = "Top arrivals are:\n\n"
+#     # for i in range(len(departures)):
+#     #     departures_mess += f"""{departures.loc[i]['Players']}"""
+#     # bot.send_message(message.chat.id, departures, parse_mode='html')
 
 bot.polling(none_stop=True)

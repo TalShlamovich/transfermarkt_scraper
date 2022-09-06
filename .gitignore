@@ -119,6 +119,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.scraperBotVENV
+scraperBotVENV/
+scraperBotVEN.bak/
 
 # Spyder project settings
 .spyderproject

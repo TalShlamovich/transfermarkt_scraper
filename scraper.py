@@ -1,10 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd 
-import numpy as np
-
-
-# print(get_search_url('manchester united'))
+import pandas as pd
 
 
 def get_clubs_from_search(url: str) -> pd.DataFrame:
@@ -37,7 +33,7 @@ def get_clubs_from_search(url: str) -> pd.DataFrame:
 
     return clubs_scrape_df
 
-# print(get_clubs_from_search(get_search_url('manchester united')))
+
 
 def get_players_from_search(url: str) -> pd.DataFrame:
     """Need to find a div with class='table-header' with text 'SEARCH RESULTS FOR PLAYERS' """
@@ -76,13 +72,13 @@ def club_info(url: str) -> pd.DataFrame:
         earned.append(top_departures_fee[i].text.strip())
         left_to.append(top_departures_to[i].img.attrs.get("title").strip())
 
-    departures_df = pd.DataFrame({"Players":departed,"Fee":earned, "Arrived From": left_to})
+    departures_df = pd.DataFrame({"player":departed,"fee":earned, "left to": left_to})
 
 
     top_arrivals = pageSoup.find_all("div", {"data-viewport":"TopTransfers_zugaenge"})[0]
     top_arrivals_names = top_arrivals.find_all('table')[0].find_all('span', {'class' : 'spielername'})
     top_arrivals_fee = top_arrivals.find_all('table')[0].find_all('td', {'class' : 'rechts'})
-    top_arrivals_from = top_departures.find_all('table')[0].find_all('span', {'class' : 'wappen-ab'})
+    top_arrivals_from = top_arrivals.find_all('table')[0].find_all('span', {'class' : 'wappen-ab'})
 
 
     arrived = []
@@ -94,12 +90,8 @@ def club_info(url: str) -> pd.DataFrame:
         arrived_from.append(top_arrivals_from[i].img.attrs.get("title").strip())
     
 
-    arrivals_df = pd.DataFrame({"Players":arrived,"Fee":paid, "Arrived From": arrived_from})
+    arrivals_df = pd.DataFrame({"player":arrived,"fee":paid, "arrived from": arrived_from})
 
     return departures_df, arrivals_df, mv
 
-# print(club_info("https://www.transfermarkt.com/west-ham-united/startseite/verein/379"))
 
-# data = club_info('https://www.transfermarkt.com/manchester-united/startseite/verein/985')
-
-# print(data[1])

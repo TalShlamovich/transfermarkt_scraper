@@ -1,6 +1,6 @@
 import telebot
 from telebot import types
-from scraper import get_clubs_from_search, club_info
+from scraper import (get_clubs_from_search, club_info)
 
 
 bot = telebot.TeleBot('5691964983:AAHEopCd7CtrXwY-_NlGkI_vg4ZdkQjqZCk')
